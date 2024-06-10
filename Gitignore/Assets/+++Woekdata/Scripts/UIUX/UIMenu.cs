@@ -24,8 +24,30 @@ public class UIMenu : MonoBehaviour
         panelLevelSelection.HideCanvasGroup();
         
         buttonLevelSelection.onClick.AddListener(ShowLevelSelection);
-        buttonNewGame.onClick.AddListener(StartNewGame);
+        buttonNewGame.onClick.AddListener(LoadLevel1);
         buttonBackToMain.onClick.AddListener(ShowMainPanel);
+        
+        buttonLevel1.onClick.AddListener(LoadLevel1);
+        buttonLevel2.onClick.AddListener(LoadLevel2);
+        buttonLevel3.onClick.AddListener(LoadLevel3);
+
+        buttonLevel2.interactable = false;
+        if (PlayerPrefs.HasKey(levelNames[1]))
+        {
+           if (PlayerPrefs.GetInt(levelNames[1]) == 1)
+           {
+               buttonLevel2.interactable = true;
+           }
+        }
+
+        buttonLevel3.interactable = false;
+        if (PlayerPrefs.HasKey(levelNames[2]))
+        {
+            if (PlayerPrefs.GetInt(levelNames[2]) == 1)
+            {
+                buttonLevel3.interactable = true;
+            }
+        }
     }
 
     void ShowLevelSelection()
@@ -40,9 +62,18 @@ public class UIMenu : MonoBehaviour
         panelLevelSelection.HideCanvasGroup();
     }
 
-    void StartNewGame()
+    void LoadLevel1()
     {
         SceneManager.LoadScene(levelNames[0]);
     }
    
+    void LoadLevel2()
+    {
+        SceneManager.LoadScene(levelNames[1]);
+    }
+    
+    void LoadLevel3()
+    {
+        SceneManager.LoadScene(levelNames[2]);
+    }
 }

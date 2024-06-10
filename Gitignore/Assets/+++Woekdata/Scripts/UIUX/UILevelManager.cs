@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,12 +16,19 @@ public class UILevelManager : MonoBehaviour
     [SerializeField] private CanvasGroup panelLose;
     [SerializeField] private Button buttonPlayAgainLose;
 
+    [SerializeField] private Button buttonBackToMain;
+    [SerializeField] private Button buttonBackToMainOnLose;
+    
     [SerializeField] private string nameNextScene;
+
+    private int coinCount = 0;
+    [SerializeField] private TextMeshProUGUI txtCoinCount;
     
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1f;
+        txtCoinCount.text = coinCount.ToString();
         //panelWin.alpha = 0f;
         //panelWin.interactable = false;
         //panelWin.blocksRaycasts = false;
@@ -31,11 +39,14 @@ public class UILevelManager : MonoBehaviour
         buttonNextLevel.onClick.AddListener(LoadNextLevel);
         buttonPlayAgainLose.onClick.AddListener(RestartLevel);
         buttonPlayAgain.onClick.AddListener(RestartLevel);
+        buttonBackToMain.onClick.AddListener(BackToMenu);
+        buttonBackToMainOnLose.onClick.AddListener(BackToMenu);
     }
 
     public void OnGameWin()
     {
         panelWin.ShowCanvasGroup();
+        PlayerPrefs.SetInt(nameNextScene, 1);
         Time.timeScale = 0f;
         //winscreen show
     }
@@ -47,6 +58,11 @@ public class UILevelManager : MonoBehaviour
         //losescreen show
     }
 
+    public void AddCoin()
+    {
+        coinCount++;
+        txtCoinCount.text = coinCount.ToString();
+    }
     void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -56,6 +72,12 @@ public class UILevelManager : MonoBehaviour
     void LoadNextLevel()
     {
         SceneManager.LoadScene(nameNextScene);
+        //
+    }
+    
+    void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
         //
     }
 

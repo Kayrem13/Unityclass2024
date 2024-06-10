@@ -81,12 +81,30 @@ public class CharacterMovement : MonoBehaviour
     void OnSneak(InputValue inputValue)
     {
         float isSneaking = inputValue.Get<float>();
+        
+        if (isSneaking == 1)
+        {
+            movementspeed -= 3f;
+        }
+        else if (isSneaking == 0)
+        {
+            movementspeed += 3f;
+        }
         Debug.Log("sneak " + isSneaking); 
     }
 
     void OnSprint(InputValue inputValue)
     {
         float isSprinting = inputValue.Get<float>();
+        
+        if (isSprinting == 1)
+        {
+            movementspeed += 3f;
+        }
+        else if (isSprinting == 0)
+        {
+            movementspeed -= 3f;
+        }
         Debug.Log("sprint " + isSprinting); 
     }
     
