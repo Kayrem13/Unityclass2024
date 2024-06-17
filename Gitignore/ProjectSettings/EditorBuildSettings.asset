@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/+++Woekdata/Scenes/Level3.unity
     guid: 13f19c18e00aa704b8fab90c98b46339
+  - enabled: 1
+    path: Assets/+++Woekdata/Scenes/Level4.unity
+    guid: 8621a198fdc9672408e536c000f64a2c
   m_configObjects: {}
