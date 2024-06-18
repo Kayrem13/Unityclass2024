@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIMenu : MonoBehaviour
 {
+    //serialized fields for panels buttons and co.
     [SerializeField] private CanvasGroup panelMain;
     [SerializeField] private Button buttonNewGame;
     [SerializeField] private Button buttonLevelSelection;
@@ -26,6 +27,7 @@ public class UIMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //upon starting, adds button functions and hides all canvas except main
         panelMain.ShowCanvasGroup();
         panelLevelSelection.HideCanvasGroup();
         panelSettings.HideCanvasGroup();
@@ -44,6 +46,7 @@ public class UIMenu : MonoBehaviour
         
         exitButton.onClick.AddListener(ExitGame);
 
+        //these functions set the button to not interactable until completion of the previous level
         buttonLevel2.interactable = false;
         if (PlayerPrefs.HasKey(levelNames[1]))
         {
@@ -72,6 +75,7 @@ public class UIMenu : MonoBehaviour
         }
     }
 
+    //function to show the level selection panel and hides the other panels
     void ShowLevelSelection()
     {
         panelMain.HideCanvasGroup();
@@ -79,6 +83,7 @@ public class UIMenu : MonoBehaviour
         panelSettings.HideCanvasGroup();
     }
     
+    //function to set the settings panel visible and hide the other panels
     void ShowSettings()
     {
         panelMain.HideCanvasGroup();
@@ -86,6 +91,7 @@ public class UIMenu : MonoBehaviour
         panelSettings.ShowCanvasGroup();
     }
 
+    //function to set the main panel visible and hide the other panels
     void ShowMainPanel()
     {
         panelMain.ShowCanvasGroup();
@@ -93,27 +99,33 @@ public class UIMenu : MonoBehaviour
         panelSettings.HideCanvasGroup();
     }
 
+    //function to exit the game
     void ExitGame()
     {
+        //quits application
         Application.Quit();
     }
     
 
+    //loads level 1
     void LoadLevel1()
     {
         SceneManager.LoadScene(levelNames[0]);
     }
    
+    //loads level 2
     void LoadLevel2()
     {
         SceneManager.LoadScene(levelNames[1]);
     }
     
+    //loads level 3
     void LoadLevel3()
     {
         SceneManager.LoadScene(levelNames[2]);
     }
     
+    //loads the extra level 4
     void LoadLevel4()
     {
         SceneManager.LoadScene(levelNames[3]);

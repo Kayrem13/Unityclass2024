@@ -1,0 +1,13 @@
+- the first Scene that has to be loaded is the menu Scene
+
+- additional to the standard packages this project uses the following packages
+
+	-Cinemachine
+	-Input System
+
+- additional contents are:
+	-sprinting
+	-sneaking
+	-playing as the enemy in the Scene Level4
+	-"defeating" the tiny Rovers in Scene Level4
+	-Sprite sheet for the Plattforms in Scenes Level1 to Level4
